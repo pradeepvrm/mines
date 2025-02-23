@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+
+body {
+  font-family: "Orbitron", serif;
+  font-weight: 600;
+  font-style: normal;
+  background: linear-gradient(300deg, rgb(6, 0, 46) 0%, rgb(0, 0, 0), rgb(34, 0, 36));
+}
+
+.d-grid {  
+  display: grid;
+  grid-template-columns: repeat(5, 100fr);
+  grid-gap: .5rem;
+}
+
+.totalScore {
+  font-size: 50px;
+  color: gold;
+  margin: 100px
+}
+
+.totalScore p {
+  margin: 0;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.gap-10 {
+  gap: 100px;
+}
+
+.gap-20 {
+  gap: 20px;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
