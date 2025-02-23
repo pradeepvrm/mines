@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from 'react'
 import './App.css'
 import Square from './square/Square'
 
@@ -13,7 +13,7 @@ while (randomNums.length < 3) {
     randomNums.push(randomNum)
   }
 }
-console.log(randomNums);
+console.log(randomNums)
 
 function App() {
   
@@ -26,7 +26,7 @@ function App() {
       items.push(<Square setScore={setScore} gameOver={GameOver} setGameOver={setGameOver} key={index} mine={true} />)
     }
     else {
-      items.push(<Square setScore={setScore} gameOver={GameOver} setGameOver={setGameOver} key={index}/>);
+      items.push(<Square setScore={setScore} gameOver={GameOver} setGameOver={setGameOver} key={index}/>)
     }
   }
 

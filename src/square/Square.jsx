@@ -1,5 +1,5 @@
-import './Square.css';
-import { useState } from 'react';
+import './Square.css'
+import { useState } from 'react'
 
 function Square({mine, gameOver, setGameOver, setScore}) {
     const [clicked, setClicked] = useState(false)
