@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import Square from './square/Square'
 
@@ -14,7 +14,7 @@ while (randomNums.length < mines) {
     randomNums.push(randomNum)
   }
 }
-console.log(randomNums.sort())
+console.log(randomNums)
 
 function App() {
   
@@ -22,6 +22,17 @@ function App() {
   const [score, setScore] = useState(100)
   const [tilesClicked, setTilesClicked] = useState(25)
   const [safeTiles, setSafeTiles] = useState(25 - mines)
+  const [highScore, setHighScore] = useState(() => {
+    const savedHighScore = localStorage.getItem('highScore')
+    return savedHighScore ? parseFloat(savedHighScore) : 0
+  })
+
+  useEffect(() => {
+    if (score > highScore) {
+      setHighScore(score)
+    }
+    localStorage.setItem('highScore', highScore)
+  })
 
   let items = [];
   for (let index=1; index < 26; index++) {
@@ -58,6 +69,8 @@ function App() {
       <div className='totalScore'>
         <p>Total Score</p>
         <p>{score.toFixed(2)}</p>
+        <p>High Score</p>
+        <p>{highScore.toFixed(2)}</p>
       </div>
       <div className='d-grid'>
         {items}

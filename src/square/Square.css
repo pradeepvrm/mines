@@ -1,19 +1,19 @@
 .square-item {
     width: 100px;
     height: 100px;
-    background: linear-gradient(300deg, rgb(172, 167, 200) 0%, rgb(220, 235, 5), rgb(216, 4, 227));
+    background: linear-gradient(300deg, rgb(172, 167, 200) 0%, rgb(5, 105, 235), rgb(216, 4, 227));
     border-radius: .5rem;
 
 }
 
 .square-item:not(.mine-square, .safe-square):hover {
-    background: linear-gradient(220deg, rgb(172, 167, 200) 0%, rgb(220, 235, 5), rgb(216, 4, 227));
+    background: linear-gradient(140deg, rgb(172, 167, 200) 0%, rgb(5, 105, 235), rgb(216, 4, 227));
     border-radius: 1rem;
     cursor: pointer;
 }
 
 .safe-square {
-    background: rgb(0, 255, 0);
+    background: rgb(200, 255, 0);
 }
 
 .mine-square {
