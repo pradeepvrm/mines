@@ -27,7 +27,7 @@ function Square({
             }
         }
     }
-
+    
     return (
         <div className={`square-item ${(clicked || gameOver) ? (isMine ? 'mine-square' : 'safe-square'): ''}`}
         onClick={mineCheck}>

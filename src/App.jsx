@@ -2,19 +2,22 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import Square from './square/Square'
 
+let mines = 3
+
 function getRandomNum(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
 }
 
-let randomNums = []
-let mines = 3
-while (randomNums.length < mines) {
-  let randomNum = getRandomNum(1, 26)
-  if (!randomNums.includes(randomNum)) {
-    randomNums.push(randomNum)
+function generateRandomNums(mines) {
+  let randomNums = []
+  while (randomNums.length < mines) {
+    let randomNum = getRandomNum(1, 26)
+    if (!randomNums.includes(randomNum)) {
+      randomNums.push(randomNum)
+    }
   }
+  return randomNums
 }
-console.log(randomNums)
 
 function App() {
   
@@ -26,6 +29,7 @@ function App() {
     const savedHighScore = localStorage.getItem('highScore')
     return savedHighScore ? parseFloat(savedHighScore) : 0
   })
+  const [randomNums, setRandomNums] = useState(() => generateRandomNums(mines))
 
   useEffect(() => {
     if (score > highScore) {
@@ -34,6 +38,14 @@ function App() {
     localStorage.setItem('highScore', highScore)
   })
 
+  function resetGame() {
+    setGameOver(false)
+    setScore(100)
+    setTilesClicked(25)
+    setSafeTiles(25-mines)
+    setRandomNums(generateRandomNums(mines))
+  }
+
   let items = [];
   for (let index=1; index < 26; index++) {
     if (randomNums.includes(index)) {
@@ -41,7 +53,7 @@ function App() {
         setScore={setScore} 
         gameOver={GameOver} 
         setGameOver={setGameOver} 
-        key={index} 
+        key={`square-${index}-${GameOver}`}
         isMine={true}
         tilesClicked={tilesClicked}
         setTilesClicked={setTilesClicked}
@@ -54,7 +66,7 @@ function App() {
         setScore={setScore} 
         gameOver={GameOver} 
         setGameOver={setGameOver} 
-        key={index}
+        key={`square-${index}-${GameOver}`}
         tilesClicked={tilesClicked}
         setTilesClicked={setTilesClicked}
         safeTiles={safeTiles}
@@ -71,6 +83,7 @@ function App() {
         <p>{score.toFixed(2)}</p>
         <p>High Score</p>
         <p>{highScore.toFixed(2)}</p>
+        {GameOver? <button onClick={resetGame}>Play again</button>:null}
       </div>
       <div className='d-grid'>
         {items}
