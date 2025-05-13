@@ -1,26 +1,35 @@
 import './Square.css'
 import { useState } from 'react'
 
-function Square({mine, gameOver, setGameOver, setScore}) {
+function Square({
+    isMine, 
+    gameOver, 
+    setGameOver, 
+    setScore,
+    tilesClicked,
+    setTilesClicked,
+    safeTiles,
+    setSafeTiles
+    }) {
     const [clicked, setClicked] = useState(false)
 
     function mineCheck() {
         if (!clicked) {
             setClicked(true)
-            if (mine) {
+            if (isMine) {
                 setGameOver(true)
                 setScore(0)
             }
             else {
-                setScore((score) => {
-                    return score * 2
-                })
+                setTilesClicked(tilesClicked - 1)
+                setSafeTiles(safeTiles - 1)
+                setScore(score => score * tilesClicked / safeTiles)
             }
         }
     }
-
+    
     return (
-        <div className={`square-item ${(clicked || gameOver) ? (mine ? 'mine-square' : 'safe-square'): ''}`}
+        <div className={`square-item ${(clicked || gameOver) ? (isMine ? 'mine-square' : 'safe-square'): ''}`}
         onClick={mineCheck}>
             
         </div>
