@@ -4,6 +4,8 @@ import Square from './square/Square'
 import MineHandler from './components/mineHandler';
 
 
+let mines = 3
+
 function getRandomNum(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
 }
