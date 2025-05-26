@@ -17,6 +17,16 @@
     cursor: pointer;
 }
 
+/* Add this media query to remove hover effect on small screens */
+@media (max-width: 500px) {
+    .square-item:not(.mine-square, .safe-square):hover {
+      /* Reset the styles that were applied on hover */
+      background: linear-gradient(300deg, rgb(172, 167, 200) 0%, rgb(5, 105, 235), rgb(216, 4, 227)); /* Or the original background */
+      border-radius: .5rem; /* Or the original border radius */
+      cursor: default; /* Change cursor back to default */
+    }
+  }
+
 .safe-square {
     background: rgb(5, 105, 235);
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50%' y='60%' dominant-baseline='middle' text-anchor='middle' font-size='60' fill='green'%3E💎%3C/text%3E%3C/svg%3E");
